@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/ian/next-analytics/issues"
   },
-  "homepage": "https://github.com/ian/next-analytics#readme"
+  "homepage": "https://github.com/ian/next-analytics#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
 }
