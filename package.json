@@ -1,0 +1,28 @@
+{
+  "name": "next-analytics",
+  "version": "0.0.1",
+  "description": "Drop-in Analytics for Next.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ian/next-analytics.git"
+  },
+  "keywords": [
+    "nextjs",
+    "next",
+    "analytics",
+    "plausible",
+    "googleanalytics",
+    "GA",
+    "logrocket"
+  ],
+  "author": "Ian Hunter <ian@01.studio>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ian/next-analytics/issues"
+  },
+  "homepage": "https://github.com/ian/next-analytics#readme"
+}
