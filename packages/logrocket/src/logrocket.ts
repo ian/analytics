@@ -36,12 +36,10 @@ export default function logrocket(pluginConfig: IPluginConfig) {
 
     identify: (props) => {
       const { payload } = props
-      console.log("identify", { payload })
       LogRocket.identify(payload.userId, payload.traits)
     },
 
     track: ({ payload }) => {
-      console.log("track", { payload })
       LogRocket.track(payload.event)
     },
   }
