@@ -5,4 +5,3 @@ Extensions to the [Analytics](https://github.com/DavidWells/analytics) plugin ec
 - [Plausible](packages/plausible)
 - [Logrocket](packages/logrocket)
 - [Indicative](packages/indicative)
-- [Splitbee](packages/splitbee)
