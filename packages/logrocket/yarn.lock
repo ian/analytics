@@ -47,6 +47,11 @@ dlv@^1.1.3:
   resolved "https://registry.yarnpkg.com/dlv/-/dlv-1.1.3.tgz#5c198a8a11453596e751494d49874bc7732f2e79"
   integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
 
+logrocket@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-1.0.15.tgz#a3b59e9fb11637a2eddcd9cf882fb8fdc0296ba8"
+  integrity sha512-YRI0b3o+eLoATO6puoBolfSIRng6AwVFMTyUGCIJA7I9+1TXTO+SNzXaF1E3VVg1lcyxHsCvVfZy5Pmhu+xEQA==
+
 typescript@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
