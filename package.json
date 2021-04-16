@@ -27,5 +27,8 @@
   "homepage": "https://github.com/ian/next-analytics#readme",
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "logrocket": "^1.0.15"
   }
 }
