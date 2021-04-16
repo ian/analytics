@@ -1,11 +1,25 @@
-# `plausible`
+# Analytics Plausible Plugin
 
-> TODO: description
+This adds [Analytics](https://github.com/DavidWells/analytics) support for [Plausible](https://plausible.io/)
+
+## Installation
+
+```
+npm install analytics analytics-plugin-plausible --save
+```
 
 ## Usage
 
 ```
-const plausible = require('plausible');
+import Analytics from "analytics"
+import plausiblePlugin from "analytics-plugin-plausible"
 
-// TODO: DEMONSTRATE API
+const analytics = Analytics({
+  app: "myapp",
+  plugins: [
+    plausiblePlugin({
+      domain: "example.com",
+    }),
+  ],
+})
 ```

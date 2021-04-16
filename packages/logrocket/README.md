@@ -1,11 +1,25 @@
-# `plausible`
+# Analytics LogRocket Plugin
 
-> TODO: description
+This adds [Analytics](https://github.com/DavidWells/analytics) support for [LogRocket](https://logrocket.com/)
+
+## Installation
+
+```
+npm install analytics analytics-plugin-logrocket --save
+```
 
 ## Usage
 
 ```
-const plausible = require('plausible');
+import Analytics from "analytics"
+import logrocketPlugin from "analytics-plugin-logrocket"
 
-// TODO: DEMONSTRATE API
+const analytics = Analytics({
+  app: "myapp",
+  plugins: [
+    logrocketPlugin({
+      appId: "...",
+    }),
+  ],
+})
 ```

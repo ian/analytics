@@ -1,11 +1,25 @@
-# `plausible`
+# Analytics Indicative Plugin
 
-> TODO: description
+This adds [Analytics](https://github.com/DavidWells/analytics) support for [Indicative](https://www.indicative.com/)
+
+## Installation
+
+```
+npm install analytics analytics-plugin-indicative --save
+```
 
 ## Usage
 
 ```
-const plausible = require('plausible');
+import Analytics from "analytics"
+import indicativePlugin from "analytics-plugin-indicative"
 
-// TODO: DEMONSTRATE API
+const analytics = Analytics({
+  app: "myapp",
+  plugins: [
+    indicativePlugin({
+      apiKey: "...",
+    }),
+  ],
+})
 ```
