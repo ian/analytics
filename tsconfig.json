@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "declaration": true,
+    "sourceMap": true,
+    "lib": ["es6", "DOM"],
+  },
+  "include": [],
+  "exclude": ["**/node_modules", "dist", "test"]
+}
