@@ -1,6 +1,6 @@
 {
   "name": "analytics-plugin-logrocket",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "LogRocket support for Analytics",
   "keywords": [
     "analytics",
