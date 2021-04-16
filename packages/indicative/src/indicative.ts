@@ -66,6 +66,7 @@ export default function indicative(pluginConfig: IPluginConfig) {
 
     identify: (props: IProps) => {
       const { payload, config } = props
+      console.log({ payload })
       // Indicative has NO identify() call in their JS file. Bug reported, for now just make the call manually
       axios
         .post(`https://api.indicative.com/service/alias/${config.apiKey}`, {
@@ -73,14 +74,17 @@ export default function indicative(pluginConfig: IPluginConfig) {
           newId: payload.userId,
         })
         .then(() => {
-          axios.post(
-            `https://api.indicative.com/service/identify/${config.apiKey}`,
-            {
-              uniqueId: payload.userId,
-              properties: payload.traits,
-            }
-          )
+          axios
+            .post(
+              `https://api.indicative.com/service/identify/${config.apiKey}`,
+              {
+                uniqueId: payload.userId,
+                properties: payload.traits,
+              }
+            )
+            .catch(console.error)
         })
+        .catch(console.error)
     },
 
     page: ({ payload, config, instance }: IProps) => {
