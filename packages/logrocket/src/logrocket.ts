@@ -31,7 +31,8 @@ export default function logrocket(pluginConfig: IPluginConfig) {
     },
 
     loaded: () => {
-      return Boolean(window["Indicative"])
+      // LogRocket loaded via package, no need to check for window existence.
+      return true
     },
 
     identify: (props) => {
