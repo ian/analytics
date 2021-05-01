@@ -22,7 +22,7 @@ const defaultConfig = {}
 
 export default function indicative(pluginConfig: IPluginConfig) {
   return {
-    name: "indicative-analytics",
+    name: "reddit-pixel-analytics",
     config: {
       ...defaultConfig,
       ...pluginConfig,
