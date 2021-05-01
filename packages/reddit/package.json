@@ -1,6 +1,6 @@
 {
   "name": "analytics-plugin-reddit-pixel",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Reddit Pixel support for Analytics",
   "keywords": [
     "analytics",
