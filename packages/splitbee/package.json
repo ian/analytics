@@ -1,0 +1,36 @@
+{
+  "name": "analytics-plugin-splitbee",
+  "version": "0.0.1",
+  "description": "Splitbee support for Analytics",
+  "keywords": [
+    "analytics",
+    "plausible"
+  ],
+  "author": "Ian Hunter <ian@01.studio>",
+  "homepage": "https://github.com/ian/analytics/tree/main/packages/splitbee#readme",
+  "license": "MIT",
+  "main": "dist/splitbee.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ian/analytics.git"
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/ian/analytics/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.40",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@splitbee/web": "^0.2.4",
+    "analytics": "^0.7.5"
+  }
+}
