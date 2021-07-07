@@ -31,6 +31,7 @@ export default function plausible(pluginConfig: IPluginConfig) {
     },
 
     initialize: (plugin: IPluginProps) => {
+      if (typeof document === "undefined") return 
       const { config, instance } = plugin
       const { domain } = config
 
@@ -44,13 +45,13 @@ export default function plausible(pluginConfig: IPluginConfig) {
     },
 
     loaded: () => {
-      return Boolean(window["plausible"])
+      return typeof window !== "undefined" && Boolean(window["plausible"])
     },
 
     // Set parameter scope at event level with 'event' method
     track: ({ payload }: IProps) => {
       const { properties, event } = payload
-      window["plausible"](event, properties)
+      typeof window !== "undefined" && window["plausible"](event, properties)
     },
   }
 }
