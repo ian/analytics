@@ -1,6 +1,6 @@
 {
   "name": "analytics-plugin-plausible",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plausible support for Analytics",
   "keywords": [
     "analytics",
