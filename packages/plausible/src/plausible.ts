@@ -1,4 +1,5 @@
 import { AnalyticsInstance } from "analytics"
+import Plausible from "plausible-tracker"
 
 type IPluginProps = {
   instance: AnalyticsInstance
@@ -6,7 +7,10 @@ type IPluginProps = {
 }
 
 type IPluginConfig = {
-  domain: string
+  apiHost?: string,
+  domain?: string,
+  hashMode?: boolean,
+  trackLocalhost?: boolean,
 }
 
 interface IProps {
@@ -15,14 +19,24 @@ interface IProps {
 
 type IPayload = {
   event: string
-  properties: object
+  properties: {
+    readonly [propName: string]: string;
+  }
+}
+
+type IPluginContext = {
+  plausible: ReturnType<typeof Plausible> | null
 }
 
 const defaultConfig = {
   enabled: true,
 }
 
-export default function plausible(pluginConfig: IPluginConfig) {
+export default function plausiblePlugin(pluginConfig: IPluginConfig) {
+  const context: IPluginContext = {
+    plausible: null,
+  }
+
   return {
     name: "plausible-analytics",
     config: {
@@ -30,28 +44,49 @@ export default function plausible(pluginConfig: IPluginConfig) {
       ...pluginConfig,
     },
 
-    initialize: (plugin: IPluginProps) => {
-      if (typeof document === "undefined") return 
-      const { config, instance } = plugin
-      const { domain } = config
+    initialize: ({ config }: IPluginProps) => {
+      const { 
+        apiHost,
+        domain,
+        hashMode,
+        trackLocalhost,
+      } = config
 
-      const script = document.createElement("script")
-      script.async = true
-      script.defer = true
-      script.src = "https://plausible.io/js/plausible.js"
-      script["data-domain"] = domain
+      const plausibleConfig = {
+        apiHost,
+        domain,
+        hashMode,
+        trackLocalhost,
+      }
 
-      document.body.appendChild(script)
+      context.plausible = Plausible(
+        Object.keys(plausibleConfig).reduce((acc, key) => {
+          if (typeof plausibleConfig[key] !== "undefined") {
+            return { ...acc, [key]: plausibleConfig[key] }
+          }
+
+          return acc
+        }, {})
+      )
     },
 
     loaded: () => {
-      return typeof window !== "undefined" && Boolean(window["plausible"])
+      return Boolean(context.plausible)
+    },
+
+    page: ({ payload }: IProps) => {
+      if (!context.plausible) return
+
+      const { properties } = payload
+      context.plausible.trackPageview({}, { props: properties })
     },
 
     // Set parameter scope at event level with 'event' method
     track: ({ payload }: IProps) => {
+      if (!context.plausible) return
+
       const { properties, event } = payload
-      typeof window !== "undefined" && window["plausible"](event, properties)
+      context.plausible.trackEvent(event, { props: properties })
     },
   }
 }

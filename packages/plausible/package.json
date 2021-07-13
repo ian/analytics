@@ -30,6 +30,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "analytics": "^0.7.5"
+    "analytics": "^0.7.5",
+    "plausible-tracker": "^0.3.1"
   }
 }
