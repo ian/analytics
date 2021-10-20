@@ -87,7 +87,7 @@ export default function indicative(pluginConfig: IPluginConfig) {
         .catch(console.error)
     },
 
-    page: ({ payload, config, instance }: IProps) => {
+    page: ({ payload }: IProps) => {
       const { properties } = payload
       window.Indicative.buildEvent("Page View", properties)
     },
