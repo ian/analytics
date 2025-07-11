@@ -1,5 +1,5 @@
 import { AnalyticsInstance } from "analytics"
-import Plausible from "plausible-tracker"
+import { Plausible } from "plausible-client"
 
 type IPluginProps = {
   instance: AnalyticsInstance
@@ -10,7 +10,6 @@ type IPluginConfig = {
   apiHost?: string,
   domain?: string,
   hashMode?: boolean,
-  trackLocalhost?: boolean,
 }
 
 interface IProps {
@@ -25,7 +24,7 @@ type IPayload = {
 }
 
 type IPluginContext = {
-  plausible: ReturnType<typeof Plausible> | null
+  plausible: Plausible | null
 }
 
 const defaultConfig = {
@@ -48,26 +47,12 @@ export default function plausiblePlugin(pluginConfig: IPluginConfig) {
       const { 
         apiHost,
         domain,
-        hashMode,
-        trackLocalhost,
       } = config
 
-      const plausibleConfig = {
-        apiHost,
-        domain,
-        hashMode,
-        trackLocalhost,
-      }
-
-      context.plausible = Plausible(
-        Object.keys(plausibleConfig).reduce((acc, key) => {
-          if (typeof plausibleConfig[key] !== "undefined") {
-            return { ...acc, [key]: plausibleConfig[key] }
-          }
-
-          return acc
-        }, {})
-      )
+      context.plausible = new Plausible({
+        domain: domain || (typeof window !== 'undefined' ? window.location.hostname : ''),
+        apiHost: apiHost || 'https://plausible.io',
+      })
     },
 
     loaded: () => {
@@ -78,7 +63,9 @@ export default function plausiblePlugin(pluginConfig: IPluginConfig) {
       if (!context.plausible) return
 
       const { properties } = payload
-      context.plausible.trackPageview({}, { props: properties })
+      context.plausible.sendEvent('pageview', { 
+        props: properties 
+      })
     },
 
     // Set parameter scope at event level with 'event' method
